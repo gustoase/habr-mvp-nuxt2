@@ -4,7 +4,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
-import DemoMediator from '~/demo/mediator/DemoMediator.vue';
+
+const DemoMediator = () => import('~/demo/mediator/DemoMediator.vue');
 
 @Component({
   components: { DemoMediator }

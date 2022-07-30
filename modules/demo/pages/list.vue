@@ -7,10 +7,11 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
-import DemoMediator from '~/demo/mediator/DemoMediator.vue';
 import eventEmitter from '~/modules/eventbus/EventEmitter';
 import { EEvents } from '~/demo/business/main/Domain';
 import { TNotification } from '~/demo/@types';
+
+const DemoMediator = () => import('~/demo/mediator/DemoMediator.vue');
 
 @Component({
   components: { DemoMediator }

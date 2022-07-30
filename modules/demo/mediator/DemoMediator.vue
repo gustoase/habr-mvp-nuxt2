@@ -22,18 +22,18 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'nuxt-property-decorator';
+import eventEmitter from '~/modules/eventbus/EventEmitter';
 import { EModal, storeModule, TState } from '~/demo/business/main/Domain';
+import { postStoreModule, TState as TPostState } from '~/demo/business/post/Domain';
+import { TNotification } from '~/demo/@types';
 
 import CreateWidgetButton from '~/demo/business/main/view/action/CreateWidgetButton.vue';
-import CreateWidgetModal from '~/demo/business/main/view/modal/CreateWidgetModal.vue';
-import WidgetList from '~/demo/business/main/view/WidgetList.vue';
-
-import MenuPosts from '~/demo/business/post/view/action/MenuPosts.vue';
 import LoadPostsButton from '~/demo/business/post/view/action/LoadPostsButton.vue';
-import PostList from '~/demo/business/post/view/PostList.vue';
-import { postStoreModule, TState as TPostState } from '~/demo/business/post/Domain';
-import eventEmitter from '~/modules/eventbus/EventEmitter';
-import { TNotification } from '~/demo/@types';
+
+const PostList = () => import('~/demo/business/post/view/PostList.vue');
+const MenuPosts = () => import('~/demo/business/post/view/action/MenuPosts.vue');
+const WidgetList = () => import('~/demo/business/main/view/WidgetList.vue');
+const CreateWidgetModal = () => import('~/demo/business/main/view/modal/CreateWidgetModal.vue');
 
 @Component({
   components: { PostList, LoadPostsButton, MenuPosts, WidgetList, CreateWidgetModal, CreateWidgetButton }
