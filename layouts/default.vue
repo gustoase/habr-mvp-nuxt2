@@ -1,11 +1,16 @@
 <template>
   <div id="page">
     <header>
-      <div class="cds-flex cds-flex-col">
-        <span class="title">Demo Model-View-Presenter</span>
-        <cds-link class="cds-mt-xxs" :to="{name: 'demo.list'}" text="Перейти на страницу модуля" />
+      <div class="cds-flex cds-justify-between">
+        <div class="content">
+          <div class="cds-flex cds-flex-col">
+            <span class="title">Demo Model-View-Presenter</span>
+            <cds-link class="cds-mt-xxs" :to="{name: 'demo.list'}" text="Перейти на страницу модуля" />
+          </div>
+          <permission-toggle class="toggle" />
+        </div>
+        <cds-link class="git" :use-router="false" to="https://github.com/gustoase/habr-mvp-nuxt2" text="github" />
       </div>
-      <permission-toggle class="toggle" />
     </header>
 
     <main>
@@ -44,16 +49,23 @@ body {
 header {
   padding-left: $cds-spacing-s;
   background-color: var(--cds-color-background-page-secondary);
-  display: flex;
-  align-items: center;
   height: 50px;
 
-  .title {
-    font-size: 23px;
+  .content {
+    display: flex;
+    align-items: center;
+
+    .title {
+      font-size: 23px;
+    }
   }
 
   .toggle {
     margin-left: $cds-spacing-m;
+  }
+  .git {
+    font-size: 20px;
+    margin: $cds-spacing-s;
   }
 }
 
