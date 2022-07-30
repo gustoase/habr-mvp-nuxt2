@@ -1,7 +1,11 @@
+import { resolve } from 'path';
+// eslint-disable-next-line import/no-named-as-default
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'habr-mvp',
+    title: 'Habr Model-View-Presenter',
     htmlAttrs: {
       lang: 'en'
     },
@@ -16,16 +20,14 @@ export default {
     ]
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-  ],
-
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
+    // Design system
+    '@central-design-system/components/dist/cds.css',
+    '@central-design-system/components/dist/tokens/b2b/variables.css'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: false,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -33,19 +35,32 @@ export default {
     '@nuxt/typescript-build'
   ],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+  plugins: [
+    '~/plugins/cds',
+    '~/plugins/validation'
   ],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
-  },
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: [
+    '~/modules/eventbus',
+    ['~/modules/demo', { namespace: 'demo' }]
+  ],
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extend(config) {
+      // добавляем alias в webpack из tsconfig. Например ~/trade-result/*
+      config.resolve.plugins.push(
+        new TsconfigPathsPlugin({
+          configFile: resolve(__dirname, './tsconfig.json')
+        })
+      );
+      config.resolve.alias.vue = 'vue/dist/vue.esm';
+    },
+    transpile: [
+      '@central-design-system/components/dist/cds.min.js',
+      '@central-design-system/components/dist/utils',
+      '@central-design-system/store/src',
+      'vee-validate/dist/rules'
+    ]
   }
-}
+};

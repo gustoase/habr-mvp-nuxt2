@@ -1,0 +1,7 @@
+{
+  "name": "mvp-demo-module",
+  "version": "0.0.1",
+  "private": true,
+  "main": "module.ts",
+  "license": "MIT"
+}

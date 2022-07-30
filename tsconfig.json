@@ -13,19 +13,16 @@
     "sourceMap": true,
     "strict": true,
     "noEmit": true,
+    "strictPropertyInitialization": false,
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "./*"
-      ],
-      "@/*": [
-        "./*"
-      ]
+      "~/*": ["./*"],
+      "~/demo/*": ["./modules/demo/*"],
+      "~/mvp/*": ["./modules/mvp/*"]
     },
     "types": [
       "@nuxt/types",
-      "@nuxtjs/axios",
       "@types/node"
     ]
   },
@@ -33,5 +30,5 @@
     "node_modules",
     ".nuxt",
     "dist"
-  ]
+  ],
 }

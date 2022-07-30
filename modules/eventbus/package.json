@@ -1,0 +1,8 @@
+{
+  "name": "event-bus-module",
+  "version": "0.0.1",
+  "description": "Global event emitter",
+  "private": true,
+  "main": "module.ts",
+  "license": "MIT"
+}

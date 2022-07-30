@@ -1,11 +1,13 @@
 <template>
-  <Tutorial />
+  <demo-mediator />
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { Component, Vue } from 'nuxt-property-decorator';
+import DemoMediator from '~/demo/mediator/DemoMediator.vue';
 
-export default Vue.extend({
-  name: 'IndexPage'
-});
+@Component({
+  components: { DemoMediator }
+})
+export default class NuxtIndex extends Vue {}
 </script>
