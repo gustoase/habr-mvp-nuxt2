@@ -1,5 +1,6 @@
 # Демонстрация frontend архитектуры Model View Presenter (MVP)
 
+Статья с подробным объяснением что зачем https://habr.com/ru/post/680096/
 ## Build Setup
 
 ```bash
