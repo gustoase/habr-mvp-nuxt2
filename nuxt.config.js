@@ -3,11 +3,6 @@ import { resolve } from 'path';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 
 export default {
-  server: {
-    host: process.env.HOST || '0.0.0.0',
-    port: process.env.PORT || 80
-  },
-
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Habr Model-View-Presenter',
